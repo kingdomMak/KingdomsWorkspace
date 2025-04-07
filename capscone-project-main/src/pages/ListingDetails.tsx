@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import { MapPin, Users, Bed, Bath, Home, Wifi, Car, Tv } from 'lucide-react';
 
