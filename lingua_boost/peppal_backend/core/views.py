@@ -35,3 +35,17 @@ class JournalEntryView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .models import KindnessChallenge
+from .serializers import KindnessChallengeSerializer
+
+class KindnessChallengeListView(APIView):
+    def get(self, request):
+        challenges = KindnessChallenge.objects.all().order_by('-created_at')
+        serializer = KindnessChallengeSerializer(challenges, many=True)
+        return Response(serializer.data)
+
+

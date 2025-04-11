@@ -16,4 +16,13 @@ class KindnessChallenge {
       date: DateTime.parse(json['date']),
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'challenge': challenge,
+      'date': date.toIso8601String(),
+    };
+  }
 }
+

@@ -15,4 +15,13 @@ class JournalEntrySerializer(serializers.ModelSerializer):
     class Meta:
         model = JournalEntry
         fields = '__all__'
+        
+from rest_framework import serializers
+from .models import KindnessChallenge
+
+class KindnessChallengeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = KindnessChallenge
+        fields = '__all__'
+
 
