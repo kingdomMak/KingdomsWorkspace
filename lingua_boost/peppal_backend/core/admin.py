@@ -1,10 +1,9 @@
 from django.contrib import admin
-from .models import Affirmation, MoodEntry, JournalEntry, KindnessChallenge
+from .models import MoodEntry
 
-# Register all models to make them editable in admin
-admin.site.register(Affirmation)
-admin.site.register(MoodEntry)
-admin.site.register(JournalEntry)
-admin.site.register(KindnessChallenge)  # ✅ This is the key part
-
+@admin.register(MoodEntry)
+class MoodEntryAdmin(admin.ModelAdmin):
+    list_display = ['user', 'mood', 'created_at']
+    ordering = ['-created_at']
+    fields = ['user', 'mood', 'note', 'created_at']  # 'created_at' added manually
 
