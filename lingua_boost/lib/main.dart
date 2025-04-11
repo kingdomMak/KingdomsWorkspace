@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/affirmation_screen.dart';
+import 'screens/mood_tracker_screen.dart';
 
 void main() {
   runApp(const PepPalApp());
@@ -17,3 +18,14 @@ class PepPalApp extends StatelessWidget {
     );
   }
 }
+
+// Example from home_screen.dart
+ElevatedButton(
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const JournalScreen()),
+    );
+  },
+  child: const Text('Open Journal'),
+)
