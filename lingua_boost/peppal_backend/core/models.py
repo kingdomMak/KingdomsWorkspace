@@ -10,9 +10,25 @@ class Affirmation(models.Model):
         return self.message[:50]
 
 class MoodEntry(models.Model):
-    mood = models.CharField(max_length=100)
+    MOOD_CHOICES = [
+        ('happy', 'Happy'),
+        ('sad', 'Sad'),
+        ('anxious', 'Anxious'),
+        ('angry', 'Angry'),
+        ('calm', 'Calm'),
+    ]
+
+    mood = models.CharField(max_length=20, choices=MOOD_CHOICES)
     note = models.TextField(blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.mood} at {self.timestamp}"
+
+class JournalEntry(models.Model):
+    title = models.CharField(max_length=100)
+    content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.mood} - {self.created_at.strftime('%Y-%m-%d %H:%M')}"
+        return f"{self.title} – {self.created_at.strftime('%Y-%m-%d')}"

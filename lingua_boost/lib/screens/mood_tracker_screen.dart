@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class MoodTrackerScreen extends StatefulWidget {
-  const MoodTrackerScreen({Key? key}) : super(key: key);
+  const MoodTrackerScreen({super.key});
 
   @override
   State<MoodTrackerScreen> createState() => _MoodTrackerScreenState();

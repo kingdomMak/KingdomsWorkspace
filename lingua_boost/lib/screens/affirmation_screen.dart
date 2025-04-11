@@ -3,7 +3,7 @@ import '../models/affirmation.dart';
 import '../services/api_service.dart';
 
 class AffirmationScreen extends StatefulWidget {
-  const AffirmationScreen({Key? key}) : super(key: key);
+  const AffirmationScreen({super.key});
 
   @override
   State<AffirmationScreen> createState() => _AffirmationScreenState();
