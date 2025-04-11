@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: peppal-backend
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn peppal_backend.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: peppal_backend.settings
+    rootDir: peppal_backend
+    python_version: 3.10.0
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: peppal-db
+          property: connectionString
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_ALLOWED_HOSTS
+        value: ".onrender.com"
+
+databases:
+  - name: peppal-db
+    databaseName: peppal
+    user: peppal 

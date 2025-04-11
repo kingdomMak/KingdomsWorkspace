@@ -1,0 +1,1 @@
+web: gunicorn peppal_backend.wsgi:application 
