@@ -1,5 +1,20 @@
-__pycache__/
-*.pyc
-db.sqlite3
-.env
-staticfiles/
+# Flutter/Dart/Pub related
+.dart_tool/
+.packages
+.pub-cache/
+build/
+
+# macOS/Android/iOS/Web
+.macos/
+android/
+ios/
+linux/
+windows/
+web/
+
+# VS Code
+.vscode/
+
+# Others
+.idea/
+*.iml
