@@ -1,28 +1,30 @@
 class KindnessChallenge {
   final int id;
-  final String challenge;
-  final DateTime date;
+  final String message;
+  final DateTime createdAt;
 
   KindnessChallenge({
     required this.id,
-    required this.challenge,
-    required this.date,
+    required this.message,
+    required this.createdAt,
   });
 
   factory KindnessChallenge.fromJson(Map<String, dynamic> json) {
     return KindnessChallenge(
       id: json['id'],
-      challenge: json['challenge'],
-      date: DateTime.parse(json['date']),
+      message: json['message'],
+      createdAt: DateTime.parse(json['created_at']),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'challenge': challenge,
-      'date': date.toIso8601String(),
+      'message': message,
+      'created_at': createdAt.toIso8601String(),
     };
   }
 }
+
+
 

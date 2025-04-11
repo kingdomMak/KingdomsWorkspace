@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/kindness_challenge.dart';
 import '../services/kindness_service.dart';
-import '../services/kindness_service.dart';
-
-
 
 class KindnessChallengesScreen extends StatefulWidget {
   const KindnessChallengesScreen({super.key});
@@ -14,12 +11,11 @@ class KindnessChallengesScreen extends StatefulWidget {
 
 class _KindnessChallengesScreenState extends State<KindnessChallengesScreen> {
   late Future<List<KindnessChallenge>> _challengesFuture;
-  final KindnessService _kindnessService = KindnessService();
 
   @override
   void initState() {
     super.initState();
-    _challengesFuture = _kindnessService.getChallenges();
+    _challengesFuture = KindnessService.fetchChallenges(); // ✅ Correct method
   }
 
   @override
@@ -39,15 +35,17 @@ class _KindnessChallengesScreenState extends State<KindnessChallengesScreen> {
           final challenges = snapshot.data!;
           return ListView.builder(
             itemCount: challenges.length,
-            itemBuilder: (context, index) {
-              final challenge = challenges[index];
-              return Card(
-                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                elevation: 3,
-                child: ListTile(
-                  leading: const Icon(Icons.favorite, color: Colors.pink),
-                  title: Text(challenge.challenge),
-                  subtitle: Text("Added on ${challenge.date.toLocal().toString().split(' ')[0]}"),
+           itemBuilder: (context, index) {
+  final challenge = challenges[index];
+  return Card(
+    margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+    elevation: 3,
+    child: ListTile(
+      leading: const Icon(Icons.favorite, color: Colors.pink),
+      title: Text(challenge.message), // ✅ was: challenge.challenge
+      subtitle: Text(
+        "Added on ${challenge.createdAt.toLocal().toString().split(' ')[0]}", // ✅ was: challenge.date
+      ),
                 ),
               );
             },
@@ -57,4 +55,5 @@ class _KindnessChallengesScreenState extends State<KindnessChallengesScreen> {
     );
   }
 }
+
 

@@ -40,9 +40,9 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
               final challenge = snapshot.data![index];
               return ListTile(
                 leading: const Icon(Icons.check_circle_outline),
-                title: Text(challenge.challenge),
+                title: Text(challenge.message), // 🟢 updated
                 subtitle: Text(
-                  'For: ${challenge.date.toLocal().toString().split(' ')[0]}',
+                  'For: ${challenge.createdAt.toLocal().toString().split(' ')[0]}', // 🟢 updated
                 ),
               );
             },
