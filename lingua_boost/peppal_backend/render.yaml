@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: peppal-backend
+    env: python
+    plan: free
+    buildCommand: pip install -r backend-requirements.txt
+    startCommand: gunicorn peppal_backend.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: peppal_backend.settings
+      - key: SECRET_KEY
+        value: your-secret-key
+      - key: DEBUG
+        value: "False"
+      - key: RENDER_PYTHON_BUILD_POETRY
+        value: false add render.yaml

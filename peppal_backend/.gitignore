@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+*.db
+.env
+
+
+
+# Ignore Python cache
+__pycache__/
+*.py[cod]
